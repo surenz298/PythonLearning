@@ -4,7 +4,7 @@ import sys
 Board = {'top-L': '', 'top-M': '', 'top-R': '',
          'mid-L': '', 'mid-M': '', 'mid-R': '',
          'low-L': '', 'low-M': '', 'low-R': ''}
-
+# Use for identying the moves
 GameBoard = {'top-L': 7, 'top-M': 8, 'top-R': 9,
              'mid-L': 4, 'mid-M': 5, 'mid-R': 6,
              'low-L': 1, 'low-M': 2, 'low-R': 3}
@@ -17,8 +17,11 @@ def printBoard(board: object) -> object:
     print('-- + -- + --')
     print(board['low-L'].rjust(3, ' ') + '|' + board['low-M'].rjust(3, ' ') + ' |' + board['low-R'])
 
-
 # A Function for update the board based on the userInput
+# Parameters:
+         #inp - the Move the user types in
+         #Board - the Board on which the game is played
+         #user - Which user turn - based on X or O
 def updateBoard(inp, board, user):
     check = board.get(inp, "None")
     if check == "None":
@@ -29,9 +32,17 @@ def updateBoard(inp, board, user):
     else:
         board[inp] = user
 
+# Yet to work on the AI part of the game
 def winboard():
     return "None"
 
+# A function to check for a Winner after every Move
+# Parameters:
+         #symbol - X or O
+# Pre-set the Winning combination
+# Pick the values from GameBoard based on the User Move
+# Check if the Players has made any of the winning moves
+# if so return a value - if not return nothing
 def calculateWinner(symbol):
     checkList = []
     win =''
@@ -39,7 +50,6 @@ def calculateWinner(symbol):
     for key, values in Board.items():
         if values == symbol:
             checkList.append(GameBoard[key])
-    #for i in len(winning_combination)
     for i in range(0, len(winning_combination)):
         if set(checkList) == set(winning_combination[i]):
             win = 'W'
@@ -47,6 +57,7 @@ def calculateWinner(symbol):
 
 
 # Ask for input from User
+# Handle false or NO inputs
 print("Would you like to Play Tic-Tac-Toe with me?")
 userInput = input().lower()
 if not userInput:
@@ -64,6 +75,8 @@ while userInput:
 
 print('All right lets play')
 
+# Get Synbol the user wants to choose
+# The Computer Gets the next one
 print("Choose a symbol for your play --X or O?")
 symbolInput = input()
 if symbolInput == 'O':
@@ -72,8 +85,7 @@ else:
     systemPlaySymbol = 'O'
 print("You are gonna be using " + symbolInput + " for your game" + '\n'
                                                           "I am gonna be using " + systemPlaySymbol + " for my moves")
-
-# noinspection PyGlobalUndefined
+# Play until a Winner
 win = ''
 printBoard(Board)
 while not win:
