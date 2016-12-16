@@ -41,28 +41,6 @@ def updateBoard(inp, board, user):
 def winboard(s):
     return
 
-'''
-def minimax(node, player):
-    if node.complete():
-        if 'W' == calculateWinner(symbolInput):#node.X_won():
-            return -1
-        elif 'T' == :
-            return 0
-        elif node.O_won():
-            return 1
-        best = None
-    for move in node.available_moves():
-        node.make_move(move, player)
-        val = self.minimax(node, get_enemy(player), alpha, beta)
-        node.make_move(move, None)
-        if player == 'O':
-            if val > best:
-                best = val
-        else:
-            if val < best:
-                best = val
-        return best
-'''
 # A function to check for a Winner after every Move
 # Parameters:
 # symbol - X or O
